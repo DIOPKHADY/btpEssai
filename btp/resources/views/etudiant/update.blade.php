@@ -12,7 +12,7 @@
 <div class="container text">
     <div class="row">
 <div class="col s12">
-    <h1>AJOUTER UN ETUDIANT</h1>
+    <h1>MODIFIER UN ETUDIANT</h1>
    <hr>
    @if (session('status'))
    <div class="alert alert-success">
@@ -27,23 +27,25 @@
 
    @endforeach
 </ul>
-   <form action="/ajouter/traitement" method="POST" class="form-group">
+   <form action="/update/traitement" method="POST" class="form-group">
     @csrf
+
+    <input type="text" name="id" style="display: none;" value="{{$etudiants->id}}">
   <div class="mb-3">
     <label for="Nom" class="form-label">Nom</label>
-    <input type="text" class="form-control" id="Nom" name="nom">
+    <input type="text" class="form-control" id="Nom" name="nom" value="{{$etudiants->nom}}">
   </div>
   <div class="mb-3">
     <label for="Prenom" class="form-label">Prenom</label>
-    <input type="text" class="form-control" id="Prenom" name="prenom">
+    <input type="text" class="form-control" id="Prenom" name="prenom" value="{{$etudiants->prenom}}">
   </div>
    <div class="mb-3">
     <label for="Classe" class="form-label">Classe</label>
-    <input type="text" class="form-control" id="classe" name="classe">
+    <input type="text" class="form-control" id="classe" name="classe" value="{{$etudiants->classe}}">
   </div>
 
 <br>
-  <button type="submit" class="btn btn-primary">ajouter l'etudiant</button>
+  <button type="submit" class="btn btn-primary">modifier l'etudiant</button>
 <br>
 <br>
 <a href="/etudiant" class="btn btn-danger"> Revenir à la liste</a>
